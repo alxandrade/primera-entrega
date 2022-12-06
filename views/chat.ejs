@@ -1,0 +1,27 @@
+        <h1 style="text-align: center;
+        font-family: sans-serif;">Chat</h1>
+        <div id="container_chat">
+          <div style="
+            text-align: center;
+            max-width: 700px;
+            background: #ececec;
+            width: 100%;
+            margin: 0px auto;
+            border-radius: 5px;">
+            <form id="data_user">
+              <input type="text" name="name_user" placeholder="Name">
+              <input type="text" name="email_user" placeholder="Email">
+              <input class="btn_submit" type="submit" value="Ingresar al chat" >
+            </form>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-around; max-width: 800px; width:100%;">
+              <div style="width: calc(100%- 300px); padding: 0px 20px 0px 0px;">
+                <input type="text" name="inputtext" id="inputtext" placeholder="Ingresa tu mensaje">
+                <button id="send_socket">Enviar</button>
+                <p id="parrafochat" style="background-color: #e2e2e2; color:black; padding: 20px 25px; display:block"></p>
+              </div>              
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript"  src="main.js"></script>
