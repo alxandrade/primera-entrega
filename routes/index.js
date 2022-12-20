@@ -1,33 +1,13 @@
-const Container = require('../contenedor')
-const producto = new Container();
+let productoRoutes = require("../routes/producto");
+let carritoRoutes = require("../routes/carrito");
 
-module.exports = app =>{   
-    app.get("/", (req, res, next)=>{    
-        let productos = producto.read();
-        res.render("index",{productos});         
+module.exports = app => {    
+    carritoRoutes(app);
+    productoRoutes(app);
+    
+    //Raiz del proyecto
+    app.get("/",(req, res, next) =>{
+        //res.send("OK");
+        res.redirect('/api/productos');
     });
-    
-    app.post('/', async (req, res)=> {
-        try{
-            let {title,price,thumbnail} = req.body
-            if(!title||!price||!thumbnail){
-                console.log("Faltan datos");
-            } else {
-                let nextId = producto.getNextId();
-                
-                let productos = producto.read();
-                let obj = req.body;
-                obj.id = nextId;
-    
-                productos.push(obj);
-                producto.write(productos);
-    
-                res.redirect('/');
-            }
-        } catch(error){
-            console.log(error);
-        }
-        
-    })
-    
 }

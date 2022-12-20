@@ -52,7 +52,6 @@ class Socket{
                 active: true
               })
             }
-            // this.mensajes.push(data);
             this.io.sockets.emit("loadUsers", this.usuarios);
           });
 
@@ -71,12 +70,6 @@ class Socket{
             });            
             this.io.sockets.emit("loadUsers", this.usuarios);
           })
-
-          // socket.emit("init", socket.id);
-          // socket.on("keyup", data =>{
-          //   this.mensajes = data;
-          //   this.io.sockets.emit("fillP", data);
-          // });
         })
       } catch (error) {
         console.log(error);

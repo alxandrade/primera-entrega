@@ -11,20 +11,39 @@
     <script src="/socket.io/socket.io.js"></script>    
   </head>
   <body>
+    <!-- NavBar -->
+    <%- include('./navbar.ejs') %>
+
     <div class="container-fluid" id="main-content">
         <div class="container">
-            <div class="row">
-                <div class="col-8">
-                    <%- include("./formulario.ejs")%> 
-                    <%- include("./productos.ejs")%> 
-                </div>
+          <div class="row align-items-start">
+            <!-- Formulario de Alta de Producto -->    
+            <%if (accion=='altaProductos' ) { %>
+              <%- include("./formulario.ejs") %> 
+            <% } %>  
 
-                <div class="col-4">
+            <%if (accion == 'listaProductos') { %> 
+              <div class="col-md-8">          
+                <section class="row p-3 my-5">                                      
+                    <!-- Desplegar Productos -->                                        
+                    <%- include("./productos.ejs") %>                    
+                </section>
+              </div>
+              <div class="col-md-4">
+                    <!-- Area del Chat -->
                     <%- include("./chat.ejs")%> 
-                </div>
-            </div>
-        </div>
-    </div>     
+              </div>
+            <% } %>
+          </div>            
+        </div>      
+    </div>
+
+    <!-- Carrito -->
+    <%if (accion=='carrito' ) { %>
+      <%- include('./carrito.ejs')%>
+    <% } %>
+
+    <!-- Footer -->
     <%- include("./footer.ejs")%>    
   </body>
 </html>

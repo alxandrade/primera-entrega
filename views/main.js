@@ -60,3 +60,7 @@ form_data_user.addEventListener("submit", evt =>{
         socket.emit("mensaje", sendMessage);
         inputtext.value = "";
     });
+
+    function showProductDetail(productId) {
+        window.location.href = `/api/productos/${productId}`;
+    };
