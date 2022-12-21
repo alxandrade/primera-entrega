@@ -1,0 +1,14 @@
+<div class="col-md-4">
+    <div class="col-md-4">
+        <div class="card" style="width: 10rem;">
+            <img src=<%= productos.thumbnail %> class="card-img-top img_secundarias" alt="...">
+            <div class="card-body">
+                <h3><%= productos.modelo %></h3>  
+                <p class="card-text"><%= productos.descripcion %></p> 
+                <p class="card-text">$<%= productos.precio %></p>
+                <p class="card-text">Stock: <%= productos.stock %></p>
+                <button class="btn btn-outline-primary" id="<%= productos.idProd %>" onclick="agregaCarrito('<%= productos.idProd %>');">Agregar</button>                            
+            </div>
+        </div>
+    </div>
+</div>

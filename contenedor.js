@@ -1,5 +1,5 @@
 const fs = require('fs');
-const pathProducts = './products.txt';
+//const pathProducts = './products.txt';
 
 class Contenedor {
     constructor() {}
@@ -13,16 +13,16 @@ class Contenedor {
         this.write(allProductsArray);            
     }
 
-    getNextId() {
+    getNextId(pathProducts) {
         let lastId = 0;
         let allProductsArray = this.read(pathProducts);    
         if (allProductsArray.length > 0) {
-            lastId = allProductsArray[allProductsArray.length - 1].id;
+            lastId = allProductsArray[allProductsArray.length - 1].idProd;
         }    
         return lastId + 1;
     }
 
-    read() {        
+    read(pathProducts) {        
         let allProductsArray = [];
         try {                        
             let allProductsString = fs.readFileSync(pathProducts, 'utf-8');                                    
@@ -35,7 +35,7 @@ class Contenedor {
         return allProductsArray;
     }
 
-    write(allProductsArray) {    
+    write(allProductsArray, pathProducts) {    
         let allProductsString = JSON.stringify(allProductsArray);
         
         try {
@@ -47,7 +47,7 @@ class Contenedor {
         }
     }
 
-    getById (id) {        
+    getById (id, pathProducts) {        
         try {
             if(!id){
                 return {status: "error", message: "Id required"}
@@ -55,15 +55,14 @@ class Contenedor {
                 let buffer = fs.readFileSync(pathProducts, 'utf-8');
                 let products = JSON.parse(buffer);
                 try{
-                    let product = products.find(p => p.id === id);
+                    let product = products.find(p => p.idProd === id);
                     return product
                 } catch{
                     return null
                 }
             }
         }
-        catch (error){ return {'error': error} }
-        
+        catch (error){ return {'error': error} }        
     }
 
     getAll = async () =>{
@@ -79,12 +78,12 @@ class Contenedor {
     catch (error){ return {'error': error} }
     }
 
-    deleteById(id){
+    deleteById(id, pathProducts){
         try{
             if (fs.existsSync(pathProducts)){
                 let data =  fs.readFileSync(pathProducts, 'utf-8');
                 let products = JSON.parse(data);
-                let newProducts = products.filter(p => p.id != id)
+                let newProducts = products.filter(p => p.idProd != id)
                 this.write(newProducts);
             } else {
                  return {status: "error", message: "el archivo no se encuentra disponible"}
@@ -93,12 +92,11 @@ class Contenedor {
         catch (error){ return {'error': error} }
     }
 
-    deleteAll() {
+    deleteAll(pathProducts) {
         console.log("Borrar Todo")
         this.products = [];
-        this.write(products);
+        this.write(products,pathProducts);
     }
-
 
     async createFile() {    
         try {    
@@ -112,6 +110,50 @@ class Contenedor {
             console.log("Error en la creación del archivo", err);
             return false;
         }
+    }
+
+    // Traer un Carrito por ID
+    getByIdCarrito (id, pathProducts) {        
+        try {
+            if(!id){
+                return {status: "error", message: "Id required"}
+            } else {
+                let buffer = fs.readFileSync(pathProducts, 'utf-8');
+                let products = JSON.parse(buffer);                
+                try{
+                    let product = products.find(p => p.idCarrito === id);
+                    return product
+                } catch{
+                    return null
+                }
+            }
+        }
+        catch (error){ return {'error': error} }        
+    }
+
+    //Traer siguiente ID de carro
+    getNextIdCarrito(pathProducts) {
+        let lastId = 0;
+        let allProductsArray = this.read(pathProducts);    
+        if (allProductsArray.length > 0) {
+            lastId = allProductsArray[allProductsArray.length - 1].idCarrito;
+        }    
+        return lastId + 1;
+    }
+
+    //Borrar un carrito por ID
+    deleteByIdCarrito(id, pathProducts){
+        try{
+            if (fs.existsSync(pathProducts)){
+                let data =  fs.readFileSync(pathProducts, 'utf-8');
+                let products = JSON.parse(data);
+                let newProducts = products.filter(p => p.idCarrito != id)
+                this.write(newProducts);
+            } else {
+                 return {status: "error", message: "el archivo no se encuentra disponible"}
+            }
+        }
+        catch (error){ return {'error': error} }
     }
 }
 

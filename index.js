@@ -18,7 +18,8 @@ socket.init();
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(express.static("./views"));
+app.use(express.static(__dirname + '/views'));
+//app.use(express.static("./views"));
 
 // View Engine
 app.set("views", path.join(__dirname, "views"));

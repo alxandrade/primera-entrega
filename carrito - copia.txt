@@ -1,0 +1,16 @@
+[{"idCarrito":1,
+"fecha":2,
+"productos": [
+    {"modelo":"Escuadra","descripcion":"Escuadra escolar mediana","precio":123.45, "idProd":1},
+    {"modelo":"Llantas","descripcion":"2 Llantas 185/60R15\" Sf-688 84H Radial","precio":"2305", "idProd":11}    
+    ]
+},
+{"idCarrito":2,
+"fecha":2,
+"productos": [
+    {"modelo":"Mesa de centro","descripcion":"Mesa de centro grande de madera","precio":"27800","idProd":5},
+    {"modelo":"Lámpara","descripcion":"Lámpara de mesa","precio":"859","idProd":6}    
+    ]
+}
+
+]

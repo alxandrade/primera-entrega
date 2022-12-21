@@ -1,16 +1,24 @@
 <h1>Alta de Producto</h1>
-<form action="http://localhost:8080/" method="post">
+<form action="http://localhost:8080/api/productos" method="post">
     <div class="mb-6">
-        <label for="exampleInputEmail1" class="form-label">Producto</label>
-        <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <label for="exampleInputEmail1" class="form-label">Modelo</label>
+        <input type="text" name="modelo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-6">
+        <label for="exampleInputEmail1" class="form-label">Descripción</label>
+        <input type="text" name="descripcion" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     </div>
     <div class="mb-6">
         <label for="exampleInputEmail1" class="form-label">Precio</label>
-        <input type="text" name="price" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input type="text" name="precio" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     </div>
     <div class="mb-6">
         <label for="exampleInputEmail1" class="form-label">Ruta Imagen</label>
         <input type="text" name="thumbnail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-6">
+        <label for="exampleInputEmail1" class="form-label">Stock</label>
+        <input type="text" name="stock" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     </div>
     <button type="submit" class="btn btn-primary">Alta</button>
 </form>

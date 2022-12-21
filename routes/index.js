@@ -6,8 +6,7 @@ module.exports = app => {
     productoRoutes(app);
     
     //Raiz del proyecto
-    app.get("/",(req, res, next) =>{
-        //res.send("OK");
+    app.get("/",(req, res, next) =>{        
         res.redirect('/api/productos');
     });
 }

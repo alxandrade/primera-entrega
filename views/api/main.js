@@ -62,9 +62,6 @@ form_data_user.addEventListener("submit", evt =>{
     });
 
     function showProductDetail(productId) {
+        console.log("Aqui hizo click");
         window.location.href = `/api/productos/${productId}`;
-    };
-
-    function agregaCarrito(productId) {
-        window.location.href = `/api/carrito/`;
     };

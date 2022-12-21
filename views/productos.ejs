@@ -5,9 +5,9 @@
                     <div class="card" style="width: 10rem;">
                         <img src=<%= producto.thumbnail %> class="card-img-top img_secundarias" alt="...">
                         <div class="card-body">
-                            <h3><%= producto.title %></h3>   
-                            <p class="card-text"><%= producto.price %></p>
-                            <button class="btn btn-outline-primary" id="<%= producto.id %>" onclick="showProductDetail('<%= producto.id %>');">Agregar</button>                            
+                            <h3><%= producto.modelo %></h3>   
+                            <p class="card-text">$<%= producto.precio %></p>
+                            <button class="btn btn-outline-primary" id="<%= producto.idProd %>" onclick="showProductDetail('<%= producto.idProd %>');">Detalle</button>                            
                         </div>
                     </div>
                 </div>
